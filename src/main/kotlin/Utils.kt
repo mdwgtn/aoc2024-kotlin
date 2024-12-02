@@ -14,6 +14,9 @@ fun test(day: Int,
          expected1: Int,
          part2: (lines: List<String>) -> Int,
          expected2: Int) {
+    starline()
+    println ("\nTest 1: " + part1(readInput(testFileName(day))))
+    println ("Test 2: " + part2(readInput(testFileName(day))))
     check(part1(readInput(testFileName(day))) == expected1)
     check(part2(readInput(testFileName(day))) == expected2)
 }
