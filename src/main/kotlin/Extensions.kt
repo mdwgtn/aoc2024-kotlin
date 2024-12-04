@@ -22,3 +22,11 @@ fun String.numeronymToInt(): Int? =
         "nine" -> 9
         else -> null
     }
+
+fun List<String>.padded2d(padding: Char): List<String> {
+    val padded = stream().map { "" + padding + it + padding}.toList().toMutableList()
+    padded.addFirst(("" + padding).repeat(padded[0].length))
+    padded.addLast( ("" + padding).repeat(padded[0].length))
+    return padded
+}
+

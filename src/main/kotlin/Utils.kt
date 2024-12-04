@@ -37,7 +37,6 @@ fun solve(day: Int,
     starline()
 }
 
-
 val numeronyms = mapOf(
     "one" to '1',
     "two" to '2',
