@@ -1,20 +1,17 @@
 package solutions
 
-import solve
-import test
 import tokenisedToInt
 import kotlin.math.abs
 
 fun main() {
-    val day = 2
-    val test01Expected = 2
-    val test02Expected = 4
+    Day02().test(2, 4)?.solve()
+}
 
-    fun part1(input: List<String>): Int = Reports(input).validCount
-    fun part2(input: List<String>): Int = Reports(input).dampenedValidCount
+class Day02 : Solution() {
+    override val day: Int = 2
+    override fun part1(input: List<String>): Int = Reports(input).validCount
 
-    test(day, ::part1, test01Expected, ::part2, test02Expected)
-    solve(day, ::part1, ::part2)
+    override fun part2(input: List<String>): Int = Reports(input).dampenedValidCount
 }
 
 class Report(private val input: List<Int>) {

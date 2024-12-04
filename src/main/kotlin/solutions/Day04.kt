@@ -2,30 +2,22 @@ package solutions
 
 import Coordinates
 import TwoDMap
-import solve
-import test
 
 fun main() {
-    val day = 4
-    val test01Expected = 18
-    val test02Expected = 9
+    Day04().test(18, 9)?.solve()
+}
 
-    fun part1(input: List<String>): Int = XmasCount(input).part1()
-    fun part2(input: List<String>): Int = XmasCount(input).part2()
+class Day04 : Solution() {
+    override val day: Int = 4
+    override fun part1(input: List<String>): Int =
+        XmasCount(input).countOfLinearSequences("XMAS")
 
-    test(day, ::part1, test01Expected, ::part2, test02Expected)
-    solve(day, ::part1, ::part2)
+    override fun part2(input: List<String>): Int =
+        XmasCount(input).countOfXWords("SAM")
 }
 
 class XmasCount(input: List<String>) {
     private val map = TwoDMap(input)
-    fun part1(): Int {
-        return countOfLinearSequences("XMAS")
-    }
-
-    fun part2(): Int {
-        return countOfXWords("SAM")
-    }
 
     private fun hasDirectionalLinearSequenceFrom(sequence: String, pos: Coordinates, direction: Int): Boolean {
         if (sequence.isEmpty()) {
@@ -49,7 +41,7 @@ class XmasCount(input: List<String>) {
         }
     }
 
-    private fun countOfLinearSequences(sequence: String): Int =
+    fun countOfLinearSequences(sequence: String): Int =
         map.coordinates.sumOf { countOfLinearSequencesFrom(sequence, it) }
 
     private fun hasXWordCentredAt(pos: Coordinates, centreLetter: Char, firstLetter: Char, lastLetter: Char): Boolean {
@@ -75,7 +67,7 @@ class XmasCount(input: List<String>) {
         }
     }
 
-    private fun countOfXWords(sequence: String): Int =
+    fun countOfXWords(sequence: String): Int =
         map.coordinates.count { hasXWordCentredAt(it, sequence[1], sequence[0], sequence[2]) }
 
 }

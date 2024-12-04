@@ -1,21 +1,18 @@
 package solutions
 
-import solve
-import test
 import tokenisedToInt
 import transposed
 import kotlin.math.abs
 
-
 fun main() {
-    val day = 1
-    val test01Expected = 11
-    val test02Expected = 31
+    Day01().test(11, 31)?.solve()
+}
 
-    fun part1(input: List<String>): Int = LocationLists(input).sumOfDifferences()
-    fun part2(input: List<String>): Int = LocationLists(input).sumOfProducts()
-    test(day, ::part1, test01Expected, ::part2, test02Expected)
-    solve(day, ::part1, ::part2)
+class Day01 : Solution() {
+    override val day: Int = 1
+    override fun part1(input: List<String>): Int = LocationLists(input).sumOfDifferences()
+
+    override fun part2(input: List<String>): Int = LocationLists(input).sumOfProducts()
 }
 
 class LocationLists(input: List<String>) {
@@ -34,8 +31,3 @@ class LocationLists(input: List<String>) {
                     .count { r -> r == l }
             }
 }
-
-
-
-
-

@@ -1,18 +1,15 @@
 package solutions
 
-import solve
-import test
-
 fun main() {
-    val day = 3
-    val test01Expected = 161
-    val test02Expected = 48
 
-    fun part1(input: List<String>): Int = MulProgram(input).sumOfMuls()
-    fun part2(input: List<String>): Int = MulProgram(input).sumOfDoMuls()
+    Day03().test(161, 48)?.solve()
+}
 
-    test(day, ::part1, test01Expected, ::part2, test02Expected)
-    solve(day, ::part1, ::part2)
+class Day03 : Solution() {
+    override val day: Int = 3
+    override fun part1(input: List<String>): Int = MulProgram(input).sumOfMuls()
+
+    override fun part2(input: List<String>): Int = MulProgram(input).sumOfDoMuls()
 }
 
 class MulProgram(input: List<String>) {

@@ -1,10 +1,10 @@
-fun String.tokenised(): List<String> = split("\\s+".toRegex())
+fun String.tokenised(): List<String> = trim().split("\\s+".toRegex())
 
-fun String.tokenisedToInt(): List<Int> = tokenised().map { it.toInt() }
+fun String.tokenisedToInt(): List<Int> = trim().tokenised().map { it.toInt() }
 
-fun List<String>.tokenised(): List<List<String>> = map { it.tokenised() }
+fun List<String>.tokenised(): List<List<String>> = map { it.trim().tokenised() }
 
-fun List<String>.tokenisedToInt(): List<List<Int>> = map { it.tokenisedToInt() }
+fun List<String>.tokenisedToInt(): List<List<Int>> = map { it.trim().tokenisedToInt() }
 
 inline fun <reified T> List<List<T>>.transposed(): List<List<T>> =
     List(this[0].size) { index -> this.map { it[index] } }
