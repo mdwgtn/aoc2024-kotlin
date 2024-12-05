@@ -13,24 +13,26 @@ abstract class Solution {
     private fun input(): List<String> = Path("src/main/kotlin/input/" + inputFileName()).readLines()
     private fun testInput(): List<String> = Path("src/main/kotlin/input/" + testFileName()).readLines()
 
-    private fun testPart1(expectedResult: Int): Boolean {
-        val result = part1(testInput())
-        println("Test 1: $result")
+    private fun testPart(
+        part: (List<String>) -> Int,
+        testName: String,
+        expectedResult: Int
+    ): Boolean {
+        val result = part(testInput())
+        println("$testName: $result")
         if (result != expectedResult) {
-            println( "...but expected $expectedResult")
+            println("...but expected $expectedResult")
             println("*************")
         }
-        return (result == expectedResult)
+        return result == expectedResult
+    }
+
+    private fun testPart1(expectedResult: Int): Boolean {
+        return testPart(::part1, "Test 1", expectedResult)
     }
 
     private fun testPart2(expectedResult: Int): Boolean {
-        val result = part2(testInput())
-        println("Test 2: $result")
-        if (result != expectedResult) {
-            println( "... but expected $expectedResult")
-            println("*************")
-        }
-        return (result == expectedResult)
+        return testPart(::part2, "Test 2", expectedResult)
     }
 
     fun test(expectedResult1: Int, expectedResult2: Int): Solution? {
